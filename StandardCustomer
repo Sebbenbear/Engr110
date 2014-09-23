@@ -1,0 +1,58 @@
+import ecs100.*;
+import java.util.*;
+
+/**
+ * Write a description of class StandardCustomer here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class StandardCustomer
+{
+    // instance variables - replace the example below with your own
+    private String password;
+    private int region;
+    private String address;
+    private String name;
+
+    /**
+     * Constructor for objects of class StandardCustomer
+     */
+    public StandardCustomer(String pword,int reg, String addr, String nm) //delimit with commas when reading to/from file
+    {
+        password = pword;
+        region = reg;
+        address = addr;
+        name = nm;
+    }
+    
+    public Item browse (ArrayList<Item> items) {
+        for(Item i : items){
+			UI.printf("%2d.	%s\n", i.getID(), i.getName());		//read off the details of the item list
+		}
+		
+		UI.println("");
+		int ans = UI.askInt("Please select the number of the item you would like to select: \n");
+		
+		for (Item i : items) {
+			if(ans == i.getID()){
+				return i;
+			}
+		}
+		UI.println("I'm sorry, that was not an option.");
+        return null;
+    }
+    
+    
+    
+
+    public String getName(){
+        return name;
+    }
+    
+    public String getPassword(){
+        return password;
+    }
+    
+
+}
